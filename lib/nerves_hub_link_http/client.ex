@@ -70,25 +70,27 @@ defmodule NervesHubLinkHTTP.Client do
     _ = apply_wrap(client(), :handle_error, [data])
   end
 
-  @spec update() :: response()
-  def update(), do: request(:get, "/device/update", [])
+  @spec update(Keyword.t()) :: response()
+  def update(opts \\ []), do: request(:get, "/device/update", [], opts)
 
-  @spec request(method(), binary(), map() | binary() | list()) :: response()
-  def request(:get, path, params) when is_map(params) do
+  @spec request(method(), binary(), map() | binary() | list(), Keyword.t()) :: response()
+  def request(method, path, params, opts \\ [])
+
+  def request(:get, path, params, opts) when is_map(params) do
     url = url(path) <> "?" <> URI.encode_query(params)
 
-    client().request(:get, url, headers(), [], opts())
+    client().request(:get, url, headers(), [], request_opts(opts))
     |> check_response()
   end
 
-  def request(verb, path, params) when is_map(params) do
+  def request(verb, path, params, opts) when is_map(params) do
     with {:ok, body} <- Jason.encode(params) do
-      request(verb, path, body)
+      request(verb, path, body, opts)
     end
   end
 
-  def request(verb, path, body) do
-    client().request(verb, url(path), headers(), body, opts())
+  def request(verb, path, body, opts) do
+    client().request(verb, url(path), headers(), body, request_opts(opts))
     |> check_response()
   end
 
@@ -142,9 +144,11 @@ defmodule NervesHubLinkHTTP.Client do
     end)
   end
 
-  defp opts() do
+  defp request_opts(opts) do
+    ssl_opts = Keyword.merge(ssl_options(), Keyword.get(opts, :ssl_opts, []))
+
     [
-      ssl_options: ssl_options(),
+      ssl_options: ssl_opts,
       recv_timeout: 60_000
     ]
   end
