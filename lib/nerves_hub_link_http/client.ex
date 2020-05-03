@@ -137,7 +137,7 @@ defmodule NervesHubLinkHTTP.Client do
     Nerves.Runtime.KV.get_all_active()
     |> Enum.reduce(headers, fn
       {"nerves_fw_" <> key, value}, headers ->
-        [{"X-NervesHubLinkHTTP-" <> key, value} | headers]
+        [{"X-NervesHub-" <> key, value} | headers]
 
       _, headers ->
         headers
