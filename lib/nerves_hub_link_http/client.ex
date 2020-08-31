@@ -132,7 +132,7 @@ defmodule NervesHubLinkHTTP.Client do
   end
 
   defp headers do
-    headers = [{"Content-Type", "application/json"}]
+    headers = [{"X-NervesHub-fwup-version", fwup_version()}, {"Content-Type", "application/json"}]
 
     Nerves.Runtime.KV.get_all_active()
     |> Enum.reduce(headers, fn
@@ -174,5 +174,10 @@ defmodule NervesHubLinkHTTP.Client do
       key: {:ECPrivateKey, key},
       server_name_indication: to_charlist(sni)
     ]
+  end
+
+  defp fwup_version do
+    {version_string, 0} = System.cmd("fwup", ["--version"])
+    String.trim(version_string)
   end
 end

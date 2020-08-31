@@ -91,6 +91,14 @@ defmodule NervesHubLinkHTTP.ClientTest do
 
       assert Client.request(:get, "/path", []) == {:ok, :response}
     end
+
+    test "fwup_version is sent with headers" do
+      Mox.expect(ClientMock, :request, fn :get, _, [{"X-NervesHub-fwup-version", _} | _], _, _ ->
+        {:ok, :response}
+      end)
+
+      assert Client.request(:get, "/path", []) == {:ok, :response}
+    end
   end
 
   test "url/1" do
