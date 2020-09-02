@@ -50,7 +50,7 @@ defmodule NervesHubLinkHTTP do
       # Reboot when FWUP is done applying the update.
       {:fwup, {:ok, 0, message}} ->
         Logger.info("[NervesHubLinkHTTP] Firmware download complete")
-        _ = Client.handle_fwup_message(message)
+        _ = Client.handle_fwup_message({:ok, 0, message})
         Nerves.Runtime.reboot()
 
       # Allow client to handle other FWUP message.
