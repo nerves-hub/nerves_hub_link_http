@@ -65,17 +65,17 @@ defmodule NervesHub.MixProject do
 
   defp deps do
     [
-      {:dialyxir, "~> 1.0.0-rc.4", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.10", only: :test},
       {:fwup, "~> 0.4.0"},
       {:hackney, "~> 1.10"},
       {:jason, "~> 1.0"},
-      {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
-      {:mox, "~> 0.4", only: :test},
       {:nerves_hub_cli, "~> 0.9", runtime: false},
       {:nerves_runtime, "~> 0.8"},
-      {:x509, "~> 0.5"}
+      {:x509, "~> 0.5"},
+      {:dialyxir, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.10", only: :test},
+      {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
+      {:mox, "~> 0.4", only: :test}
     ]
   end
 end
