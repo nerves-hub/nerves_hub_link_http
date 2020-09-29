@@ -1,6 +1,6 @@
 # NervesHubLinkHTTP
 
-[![CircleCI](https://circleci.com/gh/nerves-hub/nerves_hub_link_http/tree/master.svg?style=svg)](https://circleci.com/gh/nerves-hub/nerves_hub_link_http/tree/master)
+[![CircleCI](https://circleci.com/gh/nerves-hub/nerves_hub_link_http/tree/main.svg?style=svg)](https://circleci.com/gh/nerves-hub/nerves_hub_link_http/tree/main)
 [![Hex version](https://img.shields.io/hexpm/v/nerves_hub_link_http.svg "Hex version")](https://hex.pm/packages/nerves_hub_link_http)
 
 Official client to use HTTP polling for firmware updates from NervesHub
