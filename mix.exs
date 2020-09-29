@@ -10,7 +10,7 @@ defmodule NervesHub.MixProject do
   def project do
     [
       app: :nerves_hub_link_http,
-      version: "0.8.1",
+      version: "0.8.2",
       description: description(),
       dialyzer: dialyzer(),
       docs: [main: "readme", extras: ["README.md"]],

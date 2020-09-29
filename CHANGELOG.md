@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.8.2
+
+* Enhancements
+  * Send fwup version to server when connecting. This is required
+    If you are using patchable firmware updates.
+* Bug fixes
+  * Send entire fwup message back to NervesHubLink.Client
+
 ## v0.8.1
 
 * Bug fixes
