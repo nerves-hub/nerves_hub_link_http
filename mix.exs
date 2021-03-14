@@ -71,11 +71,11 @@ defmodule NervesHub.MixProject do
       {:nerves_hub_cli, "~> 0.9", runtime: false},
       {:nerves_runtime, "~> 0.8"},
       {:x509, "~> 0.5"},
-      {:dialyxir, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test},
-      {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
-      {:mox, "~> 0.4", only: :test}
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 end
