@@ -50,9 +50,9 @@ defmodule NervesHub.MixProject do
     "The NervesHub HTTP client connection"
   end
 
-  defp dialyzer do
+  defp dialyzer() do
     [
-      plt_add_apps: [:inets]
+      flags: [:race_conditions, :error_handling, :underspecs, :unmatched_returns]
     ]
   end
 
