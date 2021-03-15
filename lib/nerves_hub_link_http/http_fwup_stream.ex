@@ -162,7 +162,7 @@ defmodule NervesHubLinkHTTP.HTTPFwupStream do
   end
 
   defp start_httpc() do
-    :inets.start(:httpc, profile: @httpc_profile)
+    _ = :inets.start(:httpc, profile: @httpc_profile)
 
     # Only one download is attempted. There is no need
     # for multiple sessions, keeping the connection up
@@ -173,7 +173,7 @@ defmodule NervesHubLinkHTTP.HTTPFwupStream do
       keep_alive_timeout: 0
     ]
 
-    :httpc.set_options(httpc_opts, @httpc_profile)
+    :ok = :httpc.set_options(httpc_opts, @httpc_profile)
   end
 
   defp make_request(url) do
