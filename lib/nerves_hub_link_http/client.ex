@@ -111,10 +111,10 @@ defmodule NervesHubLinkHTTP.Client do
   defp check_response(response) do
     case response do
       {:ok, _} ->
-        NervesHubLinkHTTP.Connection.connected()
+        :ok = NervesHubLinkHTTP.Connection.connected()
 
       {:error, _} ->
-        NervesHubLinkHTTP.Connection.disconnected()
+        :ok = NervesHubLinkHTTP.Connection.disconnected()
 
       _ ->
         raise(

@@ -37,7 +37,7 @@ defmodule NervesHub.MixProject do
         device_api_sni: "device.nerves-hub.org",
         fwup_public_keys: []
       ],
-      extra_applications: [:logger, :iex],
+      extra_applications: [:logger, :inets],
       mod: {NervesHubLinkHTTP.Application, []}
     ]
   end
@@ -50,9 +50,9 @@ defmodule NervesHub.MixProject do
     "The NervesHub HTTP client connection"
   end
 
-  defp dialyzer do
+  defp dialyzer() do
     [
-      plt_add_apps: [:inets]
+      flags: [:race_conditions, :error_handling, :underspecs, :unmatched_returns]
     ]
   end
 

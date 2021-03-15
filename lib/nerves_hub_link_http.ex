@@ -29,7 +29,7 @@ defmodule NervesHubLinkHTTP do
     Logger.info("[NervesHubLinkHTTP] Downloading firmware: #{url}")
     {:ok, http} = HTTPFwupStream.start_link(self())
     # Spawn to allow async messages from FWUP.
-    spawn_monitor(HTTPFwupStream, :get, [http, url])
+    _ = spawn_monitor(HTTPFwupStream, :get, [http, url])
     update_receive()
   end
 
